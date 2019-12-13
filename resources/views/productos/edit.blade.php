@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 
@@ -10,7 +10,7 @@
             </div>
             <div class="card-body" style="padding:30px">
     
-                <form method="POST">
+                <form action="{{ action('ProductoController@putEdit', array('id'=>$id)) }}" method="POST">
                     {{ method_field('PUT') }}
                     @csrf
                     <div class="form-group">

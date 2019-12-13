@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Producto;
+use App\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -309,7 +310,8 @@ class DatabaseSeeder extends Seeder
     {   
         self::seedProductos();
         $this->command->info('Tabla productos inicializada con datos!');
-        // $this->call(UsersTableSeeder::class);
+        self::seedUsers();
+        $this->command->info('Tabla usuarios inicializada con datos!');
     }
     public function seedProductos(){
         Producto::truncate();
@@ -319,5 +321,21 @@ class DatabaseSeeder extends Seeder
             $p->categoria = $producto['1'];
             $p->save();
         }
+    }
+    public function seedUsers(){
+        User::truncate();
+        $user1 = new User;
+        $user1->nombre = "Usuario1";
+        $user1->name = "Usuario1";
+        $user1->email = "usuario1@alu.murciaeduca.es";
+        $user1->password = bcrypt("usuario1");
+        $user1->save();
+        $user2 = new User;
+        $user2->nombre = "Usuario2";
+        $user2->apellidos = "murciaeduca";
+        $user2->name = "Usuario2";
+        $user2->email = "usuario2@alu.murciaeduca.es";
+        $user2->password = bcrypt("usuario2");
+        $user2->save();
     }
 }

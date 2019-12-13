@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 
@@ -10,7 +10,7 @@
             </div>
             <div class="card-body" style="padding:30px">
     
-                <form method="POST">
+                <form action="{{ action('ProductoController@postCreate')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="name">Nombre</label>
