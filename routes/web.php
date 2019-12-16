@@ -30,7 +30,8 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get('productos/create', 'ProductoController@getCreate');
     Route::post('productos/create','ProductoController@postCreate');
-
+    Route::put('productos/comprar/{id}', 'ProductoController@putComprar')
+    ->where('id','[0-9]+');
     Route::get('productos/edit/{id}', 'ProductoController@getEdit')
     ->where('id','[0-9]+');
     Route::put('productos/edit/{id}', 'ProductoController@putEdit')

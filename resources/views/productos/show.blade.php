@@ -16,10 +16,18 @@
             
             @if($producto->pendiente == false)
                 <p><strong>Estado:</strong> Producto actualmente comprado.</p>
-                <a class="btn btn-danger">Comprado</a>
+                <form action ="{{ action('ProductoController@putComprar',array('id' => $producto->id)) }}" method="POST">
+                    @csrf
+                    {{method_field('PUT')}}
+                    <button type = "submit" class="btn btn-danger">Comprado</button>
+                </form>
             @elseif ($producto->pendiente == true)
                 <p><strong>Estado:</strong> Producto pendiente de compra.</p>
-                <a class="btn btn-success">Comprar</a>
+                <form action ="{{ action('ProductoController@putComprar',array('id' => $producto->id)) }}" method="POST">
+                    @csrf
+                    {{method_field('PUT')}}
+                    <button type = "submit" class="btn btn-success">Comprar</button>
+                </form>     
             @endif
             
             <a class="btn btn-warning" href = "{{ action('ProductoController@getEdit', array('id'=>$producto->id)) }}">&#x270F Editar producto</a>
